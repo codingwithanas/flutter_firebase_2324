@@ -18,123 +18,128 @@ class _PaginaLoginState extends State<PaginaLogin> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 250, 183, 159),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Logo.
-            const Icon(
-              Icons.fireplace,
-              size: 120,
-              color: Color.fromARGB(255, 255, 240, 218),
-            ),
-
-            const SizedBox(
-              height: 25,
-            ),
-
-            // Frase.
-            const Text(
-              "Benvingut/da de nou",
-              style: TextStyle(
-                color: Color.fromARGB(255, 255, 240, 218),
-                fontSize: 18,
-              ),
-            ),
-
-            const SizedBox(
-              height: 25,
-            ),
-
-            // Text Divisori.
-            const Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 25,
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Divider(
-                      thickness: 1,
-                      color: Color.fromARGB(255, 255, 240, 218),
-                    ),
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+        
+                // Logo.
+                const Icon(
+                  Icons.fireplace,
+                  size: 120,
+                  color: Color.fromARGB(255, 255, 240, 218),
+                ),
+          
+                const SizedBox(
+                  height: 25,
+                ),
+          
+                // Frase.
+                const Text(
+                  "Benvingut/da de nou",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 255, 240, 218),
+                    fontSize: 18,
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 4,
-                    ),
-                    child: Text(
-                      "Fes login",
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 255, 240, 218),
+                ),
+          
+                const SizedBox(
+                  height: 25,
+                ),
+          
+                // Text Divisori.
+                const Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 25,
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          thickness: 1,
+                          color: Color.fromARGB(255, 255, 240, 218),
+                        ),
                       ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Divider(
-                      thickness: 1,
-                      color: Color.fromARGB(255, 255, 240, 218),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(
-              height: 25,
-            ),
-
-            // TextField Email.
-            TextFieldAuth(
-              controller: controllerEmail,
-              obscureText: false,
-              hintText: "Email",
-            ),
-
-            const SizedBox(
-              height: 25,
-            ),
-
-            // TextField Password.
-            TextFieldAuth(
-              controller: controllerPassword,
-              obscureText: false,
-              hintText: "Contraseña",
-            ),
-
-            const SizedBox(
-              height: 25,
-            ),
-
-            // No estás registrat/da?
-             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Text("No ets membre?"),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: const Text(
-                      "Registrat't",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 40, 71, 97),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 4,
+                        ),
+                        child: Text(
+                          "Fes login",
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 255, 240, 218),
+                          ),
+                        ),
                       ),
+                      Expanded(
+                        child: Divider(
+                          thickness: 1,
+                          color: Color.fromARGB(255, 255, 240, 218),
+                        ),
                       ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+          
+                const SizedBox(
+                  height: 25,
+                ),
+          
+                // TextField Email.
+                TextFieldAuth(
+                  controller: controllerEmail,
+                  obscureText: false,
+                  hintText: "Email",
+                ),
+          
+                const SizedBox(
+                  height: 25,
+                ),
+          
+                // TextField Password.
+                TextFieldAuth(
+                  controller: controllerPassword,
+                  obscureText: false,
+                  hintText: "Contraseña",
+                ),
+          
+                const SizedBox(
+                  height: 25,
+                ),
+          
+                // No estás registrat/da?
+                 Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text("No ets membre?"),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: const Text(
+                          "Registrat't",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 40, 71, 97),
+                          ),
+                          ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                // Botó Login.
+                const BotoAuth(),
+          
+              ],
             ),
-            const SizedBox(
-              height: 25,
-            ),
-            // Botó Login.
-            const BotoAuth(),
-
-          ],
+          ),
         ),
       ),
     );
