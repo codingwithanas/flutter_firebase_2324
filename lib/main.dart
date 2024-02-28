@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_2324/firebase_options.dart';
 import 'package:flutter_firebase_2324/pagines/pagina_login.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_firebase_2324/pagines/pagina_registre.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MainApp());
 }
 
@@ -16,7 +20,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PaginaLogin(),
+      home: PaginaRegistre(),
     );
   }
 }
