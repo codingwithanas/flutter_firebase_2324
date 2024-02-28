@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_2324/pagines/pagina_login.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
   runApp(const MainApp());
 }
 
@@ -13,7 +17,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: PaginaLogin(),
-      );
+    );
   }
 }
 
@@ -25,4 +29,11 @@ class MainApp extends StatelessWidget {
   i tornar a fer login).
   - Si tornem a fer firebase login, ens diu en quin compte estem.
   - Si vulguéssim canviar el compte, fem firebase logout.
+  - 
+4) Fer: dart pub global activate flutterfire_cli
+5) Vincular projecte local amb projecte Firebase de la Consola.
+  - flutterfire configure
+6) Incloure les llibreries de Firebase que vulguem utilizar.
+  - flutter pub add firebase_auth
+
 */

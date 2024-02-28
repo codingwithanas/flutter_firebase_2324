@@ -12,6 +12,10 @@ class PaginaLogin extends StatefulWidget {
 class _PaginaLoginState extends State<PaginaLogin> {
   final TextEditingController controllerEmail = TextEditingController();
   final TextEditingController controllerPassword = TextEditingController();
+  
+  void ferLogin() {
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +27,17 @@ class _PaginaLoginState extends State<PaginaLogin> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-        
                 // Logo.
                 const Icon(
                   Icons.fireplace,
                   size: 120,
                   color: Color.fromARGB(255, 255, 240, 218),
                 ),
-          
+
                 const SizedBox(
                   height: 25,
                 ),
-          
+
                 // Frase.
                 const Text(
                   "Benvingut/da de nou",
@@ -43,11 +46,11 @@ class _PaginaLoginState extends State<PaginaLogin> {
                     fontSize: 18,
                   ),
                 ),
-          
+
                 const SizedBox(
                   height: 25,
                 ),
-          
+
                 // Text Divisori.
                 const Padding(
                   padding: EdgeInsets.symmetric(
@@ -81,35 +84,35 @@ class _PaginaLoginState extends State<PaginaLogin> {
                     ],
                   ),
                 ),
-          
+
                 const SizedBox(
                   height: 25,
                 ),
-          
+
                 // TextField Email.
                 TextFieldAuth(
                   controller: controllerEmail,
                   obscureText: false,
                   hintText: "Email",
                 ),
-          
+
                 const SizedBox(
                   height: 25,
                 ),
-          
+
                 // TextField Password.
                 TextFieldAuth(
                   controller: controllerPassword,
                   obscureText: false,
                   hintText: "Contraseña",
                 ),
-          
+
                 const SizedBox(
                   height: 25,
                 ),
-          
+
                 // No estás registrat/da?
-                 Padding(
+                Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -126,7 +129,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 40, 71, 97),
                           ),
-                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -135,8 +138,10 @@ class _PaginaLoginState extends State<PaginaLogin> {
                   height: 25,
                 ),
                 // Botó Login.
-                const BotoAuth(),
-          
+                BotoAuth(
+                  text: 'Login',
+                  onTap: ferLogin,
+                ),
               ],
             ),
           ),
