@@ -24,7 +24,7 @@ class BotoAuth extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 25),
         margin: const EdgeInsets.all(25),
         child: Text(
-          "Login",
+          text,
           style: TextStyle(
             color: Colors.orange[100],
             fontWeight: FontWeight.bold,
