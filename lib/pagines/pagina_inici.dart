@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_2324/auth/servei_auth.dart';
 
 class PaginaInici extends StatelessWidget {
   const PaginaInici({super.key});
 
   void logout() {
-    
+    final serveiAuth = ServeiAuth();
+
+    serveiAuth.tancarSessio();
   }
 
   @override
@@ -13,7 +16,7 @@ class PaginaInici extends StatelessWidget {
       appBar: AppBar(
         title: Text("Pagina inici"),
         actions: [
-          IconButton(onPressed: logout, 
+          IconButton(onPressed: (logout), 
           icon: Icon(Icons.logout),)
         ],
       ),
