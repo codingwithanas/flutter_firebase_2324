@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_2324/auth/servei_auth.dart';
 import 'package:flutter_firebase_2324/chat/servei_chat.dart';
+import 'package:flutter_firebase_2324/components/bombolla_missatge.dart';
 
 class PaginaChat extends StatefulWidget {
   final String emailAmbQuiParlem;
@@ -19,6 +22,7 @@ class _PaginaChatState extends State<PaginaChat> {
   final TextEditingController controllerMissatge = TextEditingController();
 
   final ServeiChat _serveiChat = ServeiChat();
+  final ServeiAuth _serveiAuth = ServeiAuth();
 
   void enviarMissatge() {
     if (controllerMissatge.text.isNotEmpty) {
@@ -52,7 +56,50 @@ class _PaginaChatState extends State<PaginaChat> {
   }
 
   Widget _construirLlistaMissatges() {
-    return Container();
+    
+    String idUsuariActual =  _serveiAuth.getUsuarisActual()!.uid;
+
+
+
+    return StreamBuilder(
+      stream: _serveiChat.getMissatges(idUsuariActual, widget.idReceptor),
+      builder: (context, snapshot) {
+
+        // Cas que hi hagi error.
+        if (snapshot.hasError) {
+          return const Text("Error carregant missatges.");
+        }
+        // Estar encara carregant.
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Text("Carregant...");
+        }
+
+        // Retornar dades (ListView).
+        return ListView(
+          children: snapshot.data!.docs.map((document) => _construirItemMissatge(document)).toList(),
+        );
+      },
+    );
+  }
+
+  Widget _construirItemMissatge(DocumentSnapshot documentSnapshot) {
+
+    // final data = document... (alta opció).
+    Map<String, dynamic> data = documentSnapshot.data() as Map<String, dynamic>;
+
+    // Saber si el mostrem a l'esquera o a la dreta.
+
+    bool esUsuariActual = data["idAutor"] == _serveiAuth.getUsuarisActual()!.uid;
+
+
+    // (Operador ternari).
+    var aliniament = esUsuariActual ? Alignment.centerRight : Alignment.centerLeft;
+    var colorBombolla = esUsuariActual ? Colors.green[200] : Colors.amber[200];
+    return Container(
+      alignment: aliniament,
+      child: BombollaMissatge(colorBombolla:  colorBombolla??Colors.black,
+      missatge: data["missatge"],),
+    ); 
   }
 
   Widget _construirZonaInputUsuari() {
